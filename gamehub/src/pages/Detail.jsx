@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Mainlayout from "../Layouts/Mainlayout";
 import { useSelector, useDispatch } from "react-redux";
-import { Avatar, Button, Grid, ImageList, ImageListItem, Stack, Typography } from "@mui/material";
+import { Avatar, Button, ImageList, ImageListItem, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { back, getDetail } from "../store/Actions/data";
 
