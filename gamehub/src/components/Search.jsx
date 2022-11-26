@@ -15,7 +15,7 @@ const Search = () => {
                 autoHighlight
                 getOptionLabel={(option) => option.title}
                 renderOption={(props, option) => 
-                    <Box component={ Link } sx={{ '& > img': { mr: 2, flexShrink: 0 }}} {...props} to={`/detail/${option.title}`}>
+                    <Box component={ Link } sx={{ '& > img': { mr: 2, flexShrink: 0 }, textDecoration: 'none'}} {...props} to={`/detail/${option.title}`}>
                         <img
                             loading="lazy"
                             width="20"

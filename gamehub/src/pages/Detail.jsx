@@ -1,6 +1,6 @@
 import { Box, Container } from "@mui/system";
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Mainlayout from "../Layouts/Mainlayout";
 import { useSelector, useDispatch } from "react-redux";
 import { Avatar, Button, ImageList, ImageListItem, Stack, Typography } from "@mui/material";
@@ -10,14 +10,19 @@ import { back, getDetail } from "../store/Actions/data";
 const Detail = () => {
     const params = useParams()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const { list } = useSelector(state => state.data)
     const { details } = useSelector(state => state.detail)
 
     const find = list.find(item => item.title === params.title)
 
     useEffect(() => {
-        dispatch(getDetail(find.id))
+        dispatch(getDetail(find?.id))
+        if(!find?.id){
+            navigate('/')
+        }
     }, [params.title])
+
 
     const getBack = () => {
         dispatch(back())
@@ -26,7 +31,7 @@ const Detail = () => {
         <Mainlayout>
             <Box sx={{minHeight: '100vh', py: 3}}>
                 <Container maxWidth='md'>
-                    <Button variant="text" component={Link} to='/' size="large" onClick={getBack} sx={{mb: 3}}>Get Back</Button>
+                    <Button variant="Primary" component={Link} to='/' size="large" onClick={getBack} sx={{mb: 3}}>Get Back</Button>
                     <Stack direction='row' spacing={2} alignItems='center'>
                         <Avatar alt={details.title} src={details.thumbnail} sx={{ width: 56, height: 56 }}/>
                         <Box>
