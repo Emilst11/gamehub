@@ -1,4 +1,4 @@
-import { Box, Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, Pagination, Stack, Typography } from "@mui/material";
+import { Box, Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, Pagination, Paper, Stack, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,7 +28,7 @@ const Home = () => {
 
     return(
         <Mainlayout>
-            <Box sx={{minHeight: '100vh', py: 3}}>
+            <Paper sx={{minHeight: '100vh', py: 3, borderRadius: 0}}>
                 <Container maxWidth='l'>
                     <Grid container spacing={3} sx={{ py: 3}}>
                         {
@@ -74,7 +74,7 @@ const Home = () => {
                         <Pagination count={postpages} page={page} onChange={pagesIndicators} shape='rounded' size="large" sx={{mx: 'auto'}}/>
                     </Stack>
                 </Container>
-            </Box>
+            </Paper>
         </Mainlayout>
     )
 }

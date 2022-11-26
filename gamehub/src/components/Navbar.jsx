@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, IconButton, Paper, Toolbar, Typography } from "@mui/material";
 import { useSelector, useDispatch } from 'react-redux'
 import ModeNightOutlinedIcon from '@mui/icons-material/ModeNightOutlined';
 import { changetheme } from "../store/Actions/mode";
@@ -13,7 +13,7 @@ const Navbar = () => {
         dispatch(changetheme(!dark))
     }
     return(
-        <Box>
+        <Paper>
             <AppBar position="static" sx={{boxShadow: 'none', py: 2}}>
                 <Toolbar variant="regular">
                     <Typography variant="h6" component='div' sx={{ mr: '1rem' }}>
@@ -25,7 +25,7 @@ const Navbar = () => {
                     </IconButton>
                 </Toolbar>
             </AppBar>
-        </Box>
+        </Paper>
     )
 }
 

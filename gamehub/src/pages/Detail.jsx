@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Mainlayout from "../Layouts/Mainlayout";
 import { useSelector, useDispatch } from "react-redux";
-import { Avatar, Button, ImageList, ImageListItem, Stack, Typography } from "@mui/material";
+import { Avatar, Button, ImageList, ImageListItem, Paper, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { back, getDetail } from "../store/Actions/data";
 
@@ -29,7 +29,7 @@ const Detail = () => {
     }
     return(
         <Mainlayout>
-            <Box sx={{minHeight: '100vh', py: 3}}>
+            <Paper sx={{minHeight: '100vh', py: 3, borderRadius: 0}}>
                 <Container maxWidth='md'>
                     <Button variant="Primary" component={Link} to='/' size="large" onClick={getBack} sx={{mb: 3}}>Get Back</Button>
                     <Stack direction='row' spacing={2} alignItems='center'>
@@ -65,7 +65,7 @@ const Detail = () => {
                         </Stack>
                     </Stack>
                 </Container>
-            </Box>
+            </Paper>
         </Mainlayout>
     )
 }
