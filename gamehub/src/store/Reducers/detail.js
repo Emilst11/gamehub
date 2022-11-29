@@ -1,14 +1,21 @@
 const detailState = {
     details: [],
-    error: null
+    error: null,
+    isLoading: false
 }
 
 const detail = (state = detailState, action) => {
     const { type, payload } = action
     switch(type){
+        case 'GET_DETAIL':
+            return{
+                ...state,
+                isLoading: true
+            }
         case 'DETAIL_SUCCESS':
             return{
                 ...state,
+                isLoading: false,
                 details: payload
             }
         case 'DETAIL_FAILED':

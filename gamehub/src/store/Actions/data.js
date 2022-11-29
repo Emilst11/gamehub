@@ -16,3 +16,17 @@ export const back = () => {
         type: 'BACK'
     }
 }
+
+export const like = (data) => {
+    return{
+        type: 'ADD_LIKE',
+        payload : data
+    }
+}
+
+export const dislike = (id) => {
+    return{
+        type: 'REMOVE_LIKE',
+        payload : id
+    }
+}

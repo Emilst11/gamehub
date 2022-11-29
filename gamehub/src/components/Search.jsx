@@ -7,11 +7,15 @@ import { Link } from "react-router-dom";
 const Search = () => {
     const { list } = useSelector(state => state.data)
     return(
-        <Box sx={{ display:'flex', alignItems: 'Center', gap:'1rem', flexGrow: '1' }}>
-            <SearchIcon/>
+        <Box 
+        sx={{ display:'flex', 
+        alignItems: 'Center',
+        gap:'1rem', 
+        flexGrow: 1 }}>
+            <SearchIcon sx={{display: {xs: 'none', sm: 'block'}}}/>
             <Autocomplete
                 options={list}
-                sx={{ width: 300 }}
+                sx={{ width: '90%', maxWidth: 300}}
                 autoHighlight
                 getOptionLabel={(option) => option.title}
                 renderOption={(props, option) => 

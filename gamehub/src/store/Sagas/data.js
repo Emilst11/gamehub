@@ -23,7 +23,6 @@ function* getList(){
 
 function* getDetails(action){
     const { payload } = action
-    console.log(payload)
     try{
         const res = yield axios.get(`${endpoint}?id=${payload}`, {
             headers: {
