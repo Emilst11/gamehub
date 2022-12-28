@@ -23,7 +23,7 @@ const Home = () => {
     const pagination = list?.slice(firstIndex, lastIndex)
     const postpages = Math.ceil(list?.length / post)
 
-    const pagesIndicators = (value) =>{
+    const pagesIndicators = (event, value) =>{
         setPage(value)
     }
 
@@ -36,92 +36,91 @@ const Home = () => {
 
     return(
         <Mainlayout>
-            <Paper sx={{minHeight: '100vh', py: 3, borderRadius: 0}}>
-                <Container maxWidth='l'>
-                    <Typography component='h3'>
-                        Games you likes
-                    </Typography>
-                    <Stack direction='row'
-                    alignItems='center'
-                    spacing={2}
-                    sx={{my: 2}}>
-                        {
-                            lists && lists.map((item, index) => <Chip label={item.name} variant='outlined' key={index}/>)
-                        }
-                    </Stack>
-                    <Grid container spacing={3} sx={{ py: 1}}>
-                        {
-                            list && (
-                                pagination.map((item, index) => 
-                                <Grid item xs={12} md={3} key={index}>
-                                    <Card>
-                                            {
-                                                isLoading ? (
-                                                    <Stack spacing={1}>
-                                                        <Skeleton width="100%">
-                                                            <Typography variant="h3">.</Typography>
-                                                        </Skeleton>
-                                                        <Skeleton width="100%">
-                                                            <Typography>.</Typography>
-                                                        </Skeleton>
-                                                        <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-                                                        <Skeleton width="100%">
-                                                            <Typography variant="body">.</Typography>
-                                                        </Skeleton>
-                                                        <Skeleton width="100%">
-                                                            <Typography>.</Typography>
-                                                        </Skeleton>
-                                                        <Skeleton width="100%">
-                                                            <Typography>.</Typography>
-                                                        </Skeleton>
-                                                    </Stack>
-                                                ):(
-                                                    <CardActionArea component={Link} to={`/detail/${item.title}`} >
-                                                        <Stack direction='row' alignItems='center' justifyContent='space-between' p={1}>
-                                                            <CardHeader
-                                                                title={item.title}
-                                                                subheader={item.release_date}
-                                                            />
-                                                            {
-                                                                likeChecks(item.id)
-                                                            }
-                                                        </Stack>
-                                                        <CardMedia
-                                                            component='img'
-                                                            width='100'
-                                                            image={item.thumbnail}
-                                                            alt={item.title}
+            <Container>
+                <Typography component='h3'>
+                    Games you likes
+                </Typography>
+                <Stack direction='row'
+                alignItems='center'
+                spacing={2}
+                sx={{my: 2}}>
+                    {
+                        lists && lists.map((item, index) => <Chip label={item.name} variant='outlined' key={index}/>)
+                    }
+                </Stack>
+                <Grid container spacing={3} sx={{ py: 1}}>
+                    {
+                        list && (
+                            pagination.map((item, index) => 
+                            <Grid item xs={12} md={4} key={index}>
+                                <Card>
+                                        {
+                                            isLoading ? (
+                                                <Stack spacing={1}>
+                                                    <Skeleton width="100%">
+                                                        <Typography variant="h3">.</Typography>
+                                                    </Skeleton>
+                                                    <Skeleton width="100%">
+                                                        <Typography>.</Typography>
+                                                    </Skeleton>
+                                                    <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
+                                                    <Skeleton width="100%">
+                                                        <Typography variant="body">.</Typography>
+                                                    </Skeleton>
+                                                    <Skeleton width="100%">
+                                                        <Typography>.</Typography>
+                                                    </Skeleton>
+                                                    <Skeleton width="100%">
+                                                        <Typography>.</Typography>
+                                                    </Skeleton>
+                                                </Stack>
+                                            ):(
+                                                <CardActionArea component={Link} to={`/detail/${item.title}`} >
+                                                    <Stack direction='row' alignItems='center' justifyContent='space-between' p={1}>
+                                                        <CardHeader
+                                                            title={item.title}
+                                                            subheader={item.release_date}
+                                                            sx={{minHeight: '80px'}}
                                                         />
-                                                        <CardContent sx={{minHeight: '200px'}}>
-                                                            <Stack spacing={1}>
-                                                                <Typography variant="body1" color="text.primary" f>
-                                                                    {item.short_description}
-                                                                </Typography>
-                                                                <Typography variant="body2" color="text.secondary">
-                                                                    Publisher : {item.publisher}
-                                                                </Typography>
-                                                                <Typography variant="body2" color="text.secondary">
-                                                                    Developer : {item.developer}
-                                                                </Typography>
-                                                                <Typography variant="body2" color="text.secondary">
-                                                                    Genre : {item.genre}
-                                                                </Typography>
-                                                            </Stack>
-                                                        </CardContent>
-                                                    </CardActionArea>
-                                                )
-                                            }
-                                    </Card>
-                                </Grid>
-                                )
+                                                        {
+                                                            likeChecks(item.id)
+                                                        }
+                                                    </Stack>
+                                                    <CardMedia
+                                                        component='img'
+                                                        width='100'
+                                                        image={item.thumbnail}
+                                                        alt={item.title}
+                                                    />
+                                                    <CardContent>
+                                                        <Stack spacing={1} sx={{minHeight: '250px'}}>
+                                                            <Typography variant="body1" color="text.primary" sx={{minHeight: '80px'}}>
+                                                                {item.short_description}
+                                                            </Typography>
+                                                            <Typography variant="body2" color="text.secondary">
+                                                                Publisher : {item.publisher}
+                                                            </Typography>
+                                                            <Typography variant="body2" color="text.secondary">
+                                                                Developer : {item.developer}
+                                                            </Typography>
+                                                            <Typography variant="body2" color="text.secondary">
+                                                                Genre : {item.genre}
+                                                            </Typography>
+                                                        </Stack>
+                                                    </CardContent>
+                                                </CardActionArea>
+                                            )
+                                        }
+                                </Card>
+                            </Grid>
                             )
-                        }
-                    </Grid>
-                    <Stack>
-                        <Pagination count={postpages} page={page} onChange={pagesIndicators} shape='rounded' size="large" sx={{mx: 'auto'}}/>
-                    </Stack>
-                </Container>
-            </Paper>
+                        )
+                    }
+                </Grid>
+                <Stack>
+                    <Pagination count={postpages} page={page} onChange={pagesIndicators} shape='rounded' size="large" sx={{mx: 'auto'}}/>
+                </Stack>
+            </Container>
         </Mainlayout>
     )
 }

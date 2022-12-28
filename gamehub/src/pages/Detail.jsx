@@ -24,7 +24,7 @@ const Detail = () => {
     useEffect(() => {
         dispatch(getDetail(find?.id))
         if(!find?.id){
-            navigate('/')
+            navigate('*')
         }
         likesFind?.id ? setLikes(true) : setLikes(false)
     }, [params.title])

@@ -5,9 +5,6 @@ export const color = (mode) =>{
             ...(mode === 'dark'? 
             {
                 // palette values for dark mode
-                primary: {
-                    main: '#10232F',
-                },
                 secondary: {
                     main: '#5d5c5b',
                 },
@@ -19,9 +16,6 @@ export const color = (mode) =>{
             }
             : {
                 // palette values for light mode
-                primary: {
-                    main: '#d4d4d4',
-                },
                 secondary: {
                     main: '#5d5c5b',
                 },
@@ -31,9 +25,13 @@ export const color = (mode) =>{
                     light: '#d9d9d9',
                 },
             }),
+            primary: {
+                main: '#fff',
+                dark: '#333134'
+            },
             background: {
                 default: '#fff',
-                paper: mode ? '#10232f' : '#fff'
+                paper: mode ? '#333134' : '#fff'
             },
         }
     }

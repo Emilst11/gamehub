@@ -1,6 +1,6 @@
 const dataState = {
     list: [],
-    isLoading: false
+    isLoading: false,
 }
 
 const data = (state = dataState, action) => {

@@ -32,7 +32,8 @@ function* getDetails(action){
         })
         yield put({type: 'DETAIL_SUCCESS', payload: res.data})
     }catch(e){
-        yield put({type: 'DETAIL_FAILED', payload: e})
+        console.log(e)
+        yield put({type: 'DETAIL_FAILED', payload: e.response})
     }
 }
 

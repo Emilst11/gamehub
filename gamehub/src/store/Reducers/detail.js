@@ -1,6 +1,6 @@
 const detailState = {
     details: [],
-    error: null,
+    error: false,
     isLoading: false
 }
 
@@ -20,13 +20,14 @@ const detail = (state = detailState, action) => {
             }
         case 'DETAIL_FAILED':
             return{
-                ...state,
-                error: payload
+                details: payload,
+                error: true,
+                isLoading: false
             }
         case 'BACK':
             return{
                 details: [],
-                error: null
+                error: false
             }
         default:
             return state
